@@ -1,63 +1,101 @@
-# @pipelinesolucoes/button
+# @pipelinesolucoes/theme
 
-Biblioteca de **componentes de botão para React**, desenvolvida para **padronização visual**, **reutilização** e **escalabilidade** em aplicações modernas e design systems.
+Base de tema e design system da Pipeline Soluções para aplicações React com Material UI (MUI).
 
-Este pacote faz parte do ecossistema de componentes da **Pipeline Soluções**.
-
----
-
-## 📦 Componentes disponíveis
-
-A biblioteca inclui os seguintes componentes:
-
-- **ActionButton**  
-  Botão de ação estilizado, baseado no tema e com tipografia configurável via `variant`.
-
-- **CircularIconLink**  
-  Componente que exibe um ícone/imagem dentro de um container circular clicável, ideal para links de redes sociais ou ações rápidas com aparência consistente.
-
-- **DownloadButton**
-  Componente que renderiza um link estilizado como botão para **download de arquivos** usando a tag `<a>` com o atributo `download`, permitindo customização visual via props.  
-
-- **FormButtonGroup**  
-  Agrupador de botões *Deletar*, *Cancelar* e *Salvar* para uso **dentro de formulários**.
-
-- **NavigationButton**  
-  Botão de navegação reutilizável baseado em link (`<a>`), estilizado com Material UI.
-
-- **NavigationLink**  
-  Link de navegação reutilizável, estilizado com Material UI.
+Esta lib não impõe um tema final nem um ThemeProvider.
+Ela define o contrato de tema, os tokens compartilhados e os helpers para que múltiplas libs de componentes (pipesol-button, pipesol-formulario, etc.) possam coexistir no mesmo projeto sem conflitos de theme.
 
 ---
 
-## Theme (opcional) — habilitar `kind` com tokens do tema
+## ✨ Objetivo
 
-Os componentes de botão desta lib suportam a prop `kind` (ex.: `primary`, `secondary`, `tertiary`, `delete`) para aplicar **tokens de estilo** definidos no tema do projeto.
+Resolver o problema clássico de:
 
-**Observação**
- - Se o tema não estiver configurado, os componentes permitem estilização via props (fallback), e kind não aplicará tokens do tema.
- - Se você adicionar/alterar global.d.ts ou declarations.d.ts, pode ser necessário reiniciar o TypeScript Server no editor.
+ - múltiplas libs React
+ - cada uma com seus próprios tokens de tema
+ - todas usando MUI
+ - sem sobrescrever o tema umas das outras
 
-Para que o TypeScript reconheça `pipesol` em `createTheme` e para que o `kind` funcione corretamente, siga os passos abaixo.
+A solução adotada:
+
+ - 1 lib base de theme (@pipesol/theme)
+ - cada lib exporta apenas um pedaço do ThemeOptions
+ - o projeto final cria um único tema, fazendo merge de tudo
 
 ---
 
-### 1) Carregar a tipagem do tema (TypeScript)
 
-Adicione **uma única vez** no seu projeto (recomendado em `global.d.ts` ou `declarations.d.ts`):
+## 📦 O que esta lib fornece
 
-```ts
-import "@pipelinesolucoes/button/mui-theme";
-export {};
+✅ Tipos e interfaces do design system (pipesol.*)
+✅ declare module "@mui/material/styles" unificado
+✅ Integração segura com MUI v6 e v7
+✅ Helper de deep merge (mergeThemeParts)
+✅ Helper para criar o tema final (createPipelineSolucoesTheme)
+✅ Arquivo runtime real (mui-theme.js) para garantir carregamento do augmentation
+
+---
+
+## 🧱 Estrutura interna (resumo)
+
+@pipesol/theme
+├─ types              → contratos e tokens
+├─ mui-theme.ts       → module augmentation (gera JS real no dist)
+├─ mergeThemeParts    → deep merge de ThemeOptions
+├─ createTheme        → helper para criar o theme final
+└─ index.ts           → entrypoint
+
+## 🧩 Tokens disponíveis
+
+theme.pipesol.buttons
+
+```
+type ButtonKind = "primary" | "secondary" | "tertiary" | "delete" | "none";
+
+interface PipeSolButtonTokens {
+  background: string;
+  backgroundHover: string;
+  color: string;
+  colorHover: string;
+  borderRadius: string;
+  boxShadow?: string;
+  padding: string;
+}
+
 ```
 
-### 2) Configurar os tokens no tema do projeto
+theme.pipesol.forms
+```
+interface PipeSolFormTokens {
+  notification?: {
+    background: string;
+  };
+  field?: {
+    background?: string;
+    backgroundDisabled?: string;
+    color?: string;
+    colorFocused?: string;
+    colorDisabled?: string;
+    borderRadius?: string;
+    boxShadow?: string;
+    borderColor?: string;
+    padding?: string;
+  };
+}
+```
 
-No seu tema (theme.ts, theme.tsx, etc.), inclua pipesol.buttons com os estilos desejados:
-import { createTheme } from "@mui/material/styles";
+Novos domínios (ex: menu, cards, sections) devem ser adicionados aqui, mantendo um único contrato.
 
-```ts
-export const theme = createTheme({
+---
+
+## 🧪 Como usar nas libs de componentes
+
+Exemplo: pipesol-button
+
+```
+import type { ThemeOptions } from "@mui/material/styles";
+
+export const buttonsThemeOptions: ThemeOptions = {
   pipesol: {
     buttons: {
       primary: {
@@ -67,110 +105,70 @@ export const theme = createTheme({
         colorHover: "#fff",
         borderRadius: "9999px",
         padding: "8px 24px",
-      },
-      secondary: {
-        background: "#fff",
-        backgroundHover: "#fff",
-        color: "#216fed",
-        colorHover: "#005ce3",
-        borderRadius: "9999px",
-        padding: "8px 24px",
-      },
-      // opcionais
-      delete: {
-        background: "#F44336",
-        backgroundHover: "#D32F2F",
-        color: "#fff",
-        colorHover: "#fff",
-        borderRadius: "9999px",
-        padding: "8px 24px",
-      },
-    },
-  },
-});
+      }
+    }
+  }
+};
 ```
-Tokens disponíveis por botão:
- - background
- - backgroundHover
- - color
- - colorHover
- - borderRadius
- - padding
- - boxShadow (opcional)
 
-### 3) Usar kind nos componentes
+📌 Regras importantes para as libs:
+❌ não criar ThemeProvider
+❌ não chamar createTheme
+✅ exportar apenas ThemeOptions
+✅ declarar @pipesol/theme como peerDependency
 
-Com o tema configurado, basta usar a prop kind:
 
-```ts
-import { NavigationButton } from "@pipelinesolucoes/button";
+## 🧩 Como usar no projeto final (app)
 
-export function Example() {
-  return (
-    <>
-      <NavigationButton kind="primary" url="#contato" aria_label="Ir para contato" width="fit-content">
-        Fale conosco
-      </NavigationButton>
+```
+import { ThemeProvider } from "@mui/material/styles";
+import {
+  createPipelineSolucoesTheme,
+} from "@pipesol/theme";
 
-      <NavigationButton kind="secondary" url="/sobre" aria_label="Ir para sobre" width="fit-content">
-        Saiba mais
-      </NavigationButton>
+import { buttonsThemeOptions } from "pipesol-button/theme";
+import { formsThemeOptions } from "pipesol-formulario/theme";
 
-      <NavigationButton kind="delete" url="#remover" aria_label="Remover" width="fit-content">
-        Remover
-      </NavigationButton>
-    </>
-  );
+const theme = createPipelineSolucoesTheme(
+  formsThemeOptions,
+  buttonsThemeOptions
+);
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
 ```
 
-## ✨ Características
+✔️ Um único ThemeProvider
+✔️ Todos os tokens disponíveis em theme.pipesol.*
+✔️ Sem conflitos entre libs
 
-- ✅ Pronto para produção
-- 🎨 Integração com Material UI
-- ♿ Foco em acessibilidade
-- 🧩 Ideal para design systems
-- 🔄 Reutilizável em múltiplos projetos
-- 📦 Publicado no npm com versionamento semântico
-- 🔐 Preparado para licenciamento por projeto
 
----
+## 🔧 Funções exportadas
 
-## 📥 Instalação
-
-```bash
-npm install @pipelinesolucoes/button 
-ou
-yarn add @pipelinesolucoes/button
+mergeThemeParts
 
 ```
-
-## 🚀 Uso básico
-
-```
-import { ActionButton } from "@pipelinesolucoes/button";
-
-export function Example() {
-  return (
-    <ActionButton variant="contained" color="primary">
-      Ação
-    </ActionButton>
-  );
-}
+mergeThemeParts(...parts: ThemeOptions[]): ThemeOptions
 ```
 
-## 🧩 Uso em Design Systems
+Faz deep merge seguro de múltiplos ThemeOptions.
 
-Este pacote foi projetado para:
+createPipelineSolucoesTheme
 
- - padronização de ações e navegação
- - reutilização entre projetos
- - evolução incremental de UI
- - integração com temas e tokens de design
+```
+createPipelineSolucoesTheme(...parts: ThemeOptions[]): Theme
+```
 
-Pode ser utilizado de forma isolada ou como parte de um design system maior.
+Cria o tema final do app a partir dos pedaços fornecidos.
 
----
+
+## ⚙️ Compatibilidade
+✅ React 18 / 19
+✅ MUI v6 e v7
+✅ Emotion
+✅ Next.js / Vite / CRA
+
 
 ## 🔐 Licença de uso comercial
 
@@ -209,7 +207,7 @@ Após adquirir a licença, você receberá um Project ID e uma License Key.
 No projeto, configure as variáveis de ambiente:
 
 PIPESOL_PROJECT_ID=meu-projeto
-PIPESOL_BUTTON_LICENSE_KEY=SUA-LICENSE-KEY-AQUI
+PIPESOL_THEME_LICENSE_KEY=SUA-LICENSE-KEY-AQUI
 
 
 Atualmente, a validação é local e não bloqueante, servindo como preparação para automação futura.
@@ -231,7 +229,7 @@ Este projeto segue Semantic Versioning (SemVer):
 Para listar as versões publicadas:
 
 ```
-npm view @pipelinesolucoes/button versions --json
+npm view @pipelinesolucoes/theme versions --json
 ```
 
 ## 🚀 Processo de publicação
@@ -260,12 +258,14 @@ Para adquirir uma licença comercial ou obter mais informações:
 
 ## 📄 Licença
 
-Copyright © Pipeline Soluções
-Este software está sujeito a licença comercial por projeto.
-Consulte o arquivo LICENSE para mais informações.
+Copyright © 2025 Pipeline Soluções.
 
-```
-Se você quiser, eu também posso gerar agora o **arquivo `LICENSE`** (texto curto e claro) no mesmo padrão profissional pra você copiar e colar como `LICENSE` no repo.
-```
+Este software é distribuído sob um **modelo de licença comercial por projeto**.
+
+A instalação do pacote é permitida para avaliação e desenvolvimento local.
+O uso em produção ou em projetos comerciais requer a aquisição
+de uma licença válida junto à Pipeline Soluções.
+
+Consulte o arquivo LICENSE para os termos completos.
 
 
