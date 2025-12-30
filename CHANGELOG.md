@@ -6,6 +6,9 @@ e este projeto adere a [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
+## [1.0.2] - 2025-12-30
+- Inclusao do theme do formulario de login.
+
 ## [1.0.0] - 2025-12-29
 - Criação da lib.
 

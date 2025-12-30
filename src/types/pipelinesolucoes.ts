@@ -10,21 +10,25 @@ export interface PipelineSolucoesButtonTokens {
   padding: string;
 }
 
+export interface PipelineSolucoesFieldTokens {
+  background: string;
+  backgroundHover: string;
+  color: string;
+  colorHover: string;
+  borderRadius: string;
+  boxShadow?: string;
+  padding: string;
+}
+
 export interface PipelineSolucoesFormTokens {
   notification?: {
     background: string;
   };
-  field?: {
-    background?: string;
-    backgroundDisabled?: string;
-    color?: string;
-    colorFocused?: string;
-    colorDisabled?: string;
-    borderRadius?: string;
-    boxShadow?: string;
-    borderColor?: string;
-    padding?: string;
-  };
+  field?: PipelineSolucoesFieldTokens;
+  login?: {
+    button?: PipelineSolucoesButtonTokens;
+    field?: PipelineSolucoesFieldTokens;
+  }
 }
 
 /**
