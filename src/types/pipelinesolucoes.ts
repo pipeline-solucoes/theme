@@ -1,23 +1,35 @@
 export type ButtonKind = "primary" | "secondary" | "tertiary" | "delete" | "none";
 
 export interface PipelineSolucoesButtonTokens {
-  background: string;
-  backgroundHover: string;
-  color: string;
-  colorHover: string;
-  borderRadius: string;
+  background?: string;
+  color?: string;
+  
+  backgroundHover?: string;  
+  colorHover?: string;
+  
+  backgroundDisabled?: string;
+  colorDisabled?: string;  
+
+  borderRadius?: string;
   boxShadow?: string;
-  padding: string;
+
+  padding?: string;
 }
 
 export interface PipelineSolucoesFieldTokens {
-  background: string;
-  backgroundHover: string;
-  color: string;
-  colorHover: string;
-  borderRadius: string;
+  background?: string;
+  color?: string;
+
+  backgroundDisabled?: string;
+  colorDisabled?: string; 
+
+  backgroundFocusedField?: string;
+  colorFocusedField?: string;
+
+  borderRadius?: string;
   boxShadow?: string;
-  padding: string;
+  
+  padding?: string;  
 }
 
 export interface PipelineSolucoesFormTokens {
