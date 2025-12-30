@@ -23,11 +23,12 @@ export interface PipelineSolucoesFieldTokens {
   backgroundDisabled?: string;
   colorDisabled?: string; 
 
-  backgroundFocusedField?: string;
-  colorFocusedField?: string;
+  backgroundFocused?: string;
+  colorFocused?: string;
 
   borderRadius?: string;
   boxShadow?: string;
+  borderColor?: string;
   
   padding?: string;  
 }
