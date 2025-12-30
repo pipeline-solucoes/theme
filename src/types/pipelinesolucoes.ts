@@ -1,5 +1,15 @@
 export type ButtonKind = "primary" | "secondary" | "tertiary" | "delete" | "none";
 
+export interface PipelineSolucoesLinkTokens {  
+  color?: string;   
+  colorHover?: string;  
+  colorDisabled?: string;  
+
+  padding?: string;
+  margin?: string;
+}
+
+
 export interface PipelineSolucoesButtonTokens {
   background?: string;
   color?: string;
@@ -14,6 +24,7 @@ export interface PipelineSolucoesButtonTokens {
   boxShadow?: string;
 
   padding?: string;
+  margin?: string;
 }
 
 export interface PipelineSolucoesFieldTokens {
@@ -31,6 +42,7 @@ export interface PipelineSolucoesFieldTokens {
   borderColor?: string;
   
   padding?: string;  
+  margin?: string;
 }
 
 export interface PipelineSolucoesFormTokens {
@@ -38,9 +50,14 @@ export interface PipelineSolucoesFormTokens {
     background: string;
   };
   field?: PipelineSolucoesFieldTokens;
-  login?: {
+  login?: {    
+    background? : string;
+    borderRadius? : string;
+    border? : string;
+    boxShadow? : string;
     button?: PipelineSolucoesButtonTokens;
     field?: PipelineSolucoesFieldTokens;
+    link?: PipelineSolucoesLinkTokens;
   }
 }
 
