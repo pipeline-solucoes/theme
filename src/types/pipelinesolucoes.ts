@@ -22,6 +22,7 @@ export interface PipelineSolucoesButtonTokens {
 
   borderRadius?: string;
   boxShadow?: string;
+  border? : string;
 
   padding?: string;
   margin?: string;
@@ -58,6 +59,7 @@ export interface PipelineSolucoesFormTokens {
     button?: PipelineSolucoesButtonTokens;
     field?: PipelineSolucoesFieldTokens;
     link?: PipelineSolucoesLinkTokens;
+    divider?: string;
   }
 }
 
