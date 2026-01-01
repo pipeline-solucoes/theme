@@ -3,6 +3,7 @@ import { PipelineSolucoesLinkTokens } from "./linkTokens";
 import { PipelineSolucoesTypographyTokens } from "./typographyTokens";
 
 export interface PipelineSolucoesFieldTokens {
+
   background?: string;
   color?: string;
 
@@ -16,6 +17,7 @@ export interface PipelineSolucoesFieldTokens {
   boxShadow?: string;
   borderColor?: string;
   
+  height?: string
   padding?: string;  
   margin?: string;
 
