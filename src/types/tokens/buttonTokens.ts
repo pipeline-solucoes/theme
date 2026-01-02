@@ -1,3 +1,5 @@
+import { PipelineSolucoesTypographyTokens } from "./typographyTokens";
+
 export type ButtonKind = "primary" | "secondary" | "tertiary" | "delete" | "none";
 
 export interface PipelineSolucoesButtonTokens {
@@ -16,5 +18,7 @@ export interface PipelineSolucoesButtonTokens {
 
   padding?: string;
   margin?: string;
+
+  typography?: PipelineSolucoesTypographyTokens;
 }
 
