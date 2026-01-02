@@ -1,9 +1,9 @@
 import { ButtonKind, PipelineSolucoesButtonTokens } from "./tokens/buttonTokens";
 import { PipelineSolucoesFooterTokens } from "./tokens/footerTokens";
 import { PipelineSolucoesFieldTokens, PipelineSolucoesLoginFormTokens, PipelineSolucoesNotificationFormTokens } from "./tokens/formTokens";
+import { PipelineSolucoesNotificationTokens } from "./tokens/notificationTokens";
 import { PipelineSolucoesSafeAreaTokens } from "./tokens/safeAreaTokens";
 import { PipelineSolucoesTypographyTokens } from "./tokens/typographyTokens";
-
 
 /**
  * Aqui é o "contrato" único do Theme.pipesol
@@ -21,4 +21,5 @@ export interface PipelineSolucoesThemeTokens {
     login?: PipelineSolucoesLoginFormTokens;
   },
   footer?: PipelineSolucoesFooterTokens;
+  notification?: PipelineSolucoesNotificationTokens;
 }

@@ -10,6 +10,7 @@ e este projeto adere a [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - implementação do PipelineSolucoesLinkTokens.
 - implementação do PipelineSolucoesSafeAreaTokens.
 - implementação do PipelineSolucoesFooterTokens.
+- implementacao do PipelineSolucoesNotificationTokens.
 
 ## [1.0.4] - 2025-12-30
 - Ajuste no PipelineSolucoesFieldTokens
