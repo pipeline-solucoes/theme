@@ -1,5 +1,7 @@
 import { ButtonKind, PipelineSolucoesButtonTokens } from "./tokens/buttonTokens";
+import { PipelineSolucoesFooterTokens } from "./tokens/footerTokens";
 import { PipelineSolucoesFieldTokens, PipelineSolucoesLoginFormTokens, PipelineSolucoesNotificationFormTokens } from "./tokens/formTokens";
+import { PipelineSolucoesSafeAreaTokens } from "./tokens/safeAreaTokens";
 import { PipelineSolucoesTypographyTokens } from "./tokens/typographyTokens";
 
 
@@ -8,6 +10,7 @@ import { PipelineSolucoesTypographyTokens } from "./tokens/typographyTokens";
  * (vai crescer com o tempo: cards, menu, section, etc.)
  */
 export interface PipelineSolucoesThemeTokens {
+  safeArea?: PipelineSolucoesSafeAreaTokens;
   buttons?: {
     typography?: PipelineSolucoesTypographyTokens;
     variants?: Partial<Record<ButtonKind, PipelineSolucoesButtonTokens>>;
@@ -16,5 +19,6 @@ export interface PipelineSolucoesThemeTokens {
     notification?: PipelineSolucoesNotificationFormTokens;
     field?: PipelineSolucoesFieldTokens;
     login?: PipelineSolucoesLoginFormTokens;
-  }
+  },
+  footer?: PipelineSolucoesFooterTokens;
 }

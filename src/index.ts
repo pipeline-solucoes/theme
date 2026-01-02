@@ -10,6 +10,8 @@ export * from "./types/tokens/buttonTokens";
 export * from "./types/tokens/linkTokens";
 export * from "./types/tokens/formTokens";
 export * from "./types/tokens/typographyTokens";
+export * from "./types/tokens/safeAreaTokens";
+export * from "./types/tokens/footerTokens";
 
 export * from "./types/pipelinesolucoes";
 export * from "./utils/mergeThemeParts";
