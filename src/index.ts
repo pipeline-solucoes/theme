@@ -14,6 +14,7 @@ export * from "./types/tokens/typographyTokens";
 export * from "./types/tokens/safeAreaTokens";
 export * from "./types/tokens/footerTokens";
 export * from "./types/tokens/notificationTokens";
+export * from "./types/tokens/chipTokens";
 
 export * from "./types/pipelinesolucoes";
 export * from "./utils/mergeThemeParts";

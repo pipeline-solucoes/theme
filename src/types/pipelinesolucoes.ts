@@ -1,4 +1,5 @@
 import { ButtonKind, PipelineSolucoesButtonTokens } from "./tokens/buttonTokens";
+import { PipelineSolucoesChipTokens } from "./tokens/chipTokens";
 import { PipelineSolucoesFooterTokens } from "./tokens/footerTokens";
 import { PipelineSolucoesFieldTokens, PipelineSolucoesLoginFormTokens, PipelineSolucoesNotificationFormTokens } from "./tokens/formTokens";
 import { PipelineSolucoesNotificationTokens } from "./tokens/notificationTokens";
@@ -16,9 +17,10 @@ export interface PipelineSolucoesThemeTokens {
     variants?: Partial<Record<ButtonKind, PipelineSolucoesButtonTokens>>;
   }
   forms?: {
-    notification?: PipelineSolucoesNotificationFormTokens;
-    field?: PipelineSolucoesFieldTokens;
-    login?: PipelineSolucoesLoginFormTokens;
+    chip?: PipelineSolucoesChipTokens;
+    field?: PipelineSolucoesFieldTokens;    
+    notification?: PipelineSolucoesNotificationFormTokens;    
+    login?: PipelineSolucoesLoginFormTokens;    
   },
   footer?: PipelineSolucoesFooterTokens;
   notification?: PipelineSolucoesNotificationTokens;
