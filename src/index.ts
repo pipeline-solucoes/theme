@@ -1,6 +1,8 @@
 
 import "./mui-theme";
 
+export * from './hooks/useBreakpoints';
+
 export * from "./types/props/BorderProps";
 export * from "./types/props/ColorProps";
 export * from "./types/props/LayoutProps";
