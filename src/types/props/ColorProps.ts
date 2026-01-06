@@ -8,5 +8,6 @@ export interface ColorProps {
   backgroundDisabled?: string;
   colorDisabled?: string;  
 
+  backgroundFocused?: string;
   colorFocused?: string;
 }
