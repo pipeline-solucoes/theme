@@ -1,7 +1,7 @@
 import { ButtonKind, PipelineSolucoesButtonTokens } from "./tokens/buttonTokens";
 import { PipelineSolucoesChipTokens } from "./tokens/chipTokens";
 import { PipelineSolucoesFooterTokens } from "./tokens/footerTokens";
-import { PipelineSolucoesFieldTokens, PipelineSolucoesLoginFormTokens, PipelineSolucoesNotificationFormTokens } from "./tokens/formTokens";
+import { PipelineSolucoesFieldTokens, PipelineSolucoesNotificationFormTokens } from "./tokens/formTokens";
 import { PipelineSolucoesNotificationTokens } from "./tokens/notificationTokens";
 import { PipelineSolucoesSafeAreaTokens } from "./tokens/safeAreaTokens";
 import { PipelineSolucoesTypographyTokens } from "./tokens/typographyTokens";
@@ -17,10 +17,14 @@ export interface PipelineSolucoesThemeTokens {
     variants?: Partial<Record<ButtonKind, PipelineSolucoesButtonTokens>>;
   }
   forms?: {
+    background? : string;
+    borderRadius? : string;
+    border? : string;
+    boxShadow? : string;
     chip?: PipelineSolucoesChipTokens;
     field?: PipelineSolucoesFieldTokens;    
     notification?: PipelineSolucoesNotificationFormTokens;    
-    login?: PipelineSolucoesLoginFormTokens;    
+    button?: PipelineSolucoesButtonTokens;   
   },
   footer?: PipelineSolucoesFooterTokens;
   notification?: PipelineSolucoesNotificationTokens;

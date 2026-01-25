@@ -1,5 +1,3 @@
-import { PipelineSolucoesButtonTokens } from "./buttonTokens";
-import { PipelineSolucoesLinkTokens } from "./linkTokens";
 import { PipelineSolucoesTypographyTokens } from "./typographyTokens";
 
 export interface PipelineSolucoesFieldTokens {
@@ -26,15 +24,4 @@ export interface PipelineSolucoesFieldTokens {
 
 export interface PipelineSolucoesNotificationFormTokens {
   background?: string;
-}
-
-export interface PipelineSolucoesLoginFormTokens {
-  background? : string;
-  borderRadius? : string;
-  border? : string;
-  boxShadow? : string;
-  button?: PipelineSolucoesButtonTokens;
-  field?: PipelineSolucoesFieldTokens;
-  link?: PipelineSolucoesLinkTokens;
-  divider?: string;
 }
