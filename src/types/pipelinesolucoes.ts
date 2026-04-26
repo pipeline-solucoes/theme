@@ -22,6 +22,7 @@ export interface PipelineSolucoesThemeTokens {
     border? : string;
     boxShadow? : string;
     chip?: PipelineSolucoesChipTokens;
+    label?: PipelineSolucoesFieldTokens;
     field?: PipelineSolucoesFieldTokens;    
     notification?: PipelineSolucoesNotificationFormTokens;    
     button?: PipelineSolucoesButtonTokens;   
