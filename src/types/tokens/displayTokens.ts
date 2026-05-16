@@ -6,15 +6,10 @@ export interface PipelineSolucoesModalTokens {
   borderRadius?: string;
   boxShadow?: string;
   
-  width?: string;
-  height?: string;
-  padding?: string;  
-
   iconCloseColor?: string; 
 
   variantTitulo?: PipelineSolucoesTypographyTokens;
-  colorTitulo?: string;
-  alignTitulo?: string;  
+  colorTitulo?: string;   
   paddingTitulo?: string;
 }
 
