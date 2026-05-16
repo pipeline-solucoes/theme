@@ -1,5 +1,6 @@
 import { ButtonKind, PipelineSolucoesButtonTokens } from "./tokens/buttonTokens";
 import { PipelineSolucoesChipTokens } from "./tokens/chipTokens";
+import { PipelineSolucoesModalTokens } from "./tokens/displayTokens";
 import { PipelineSolucoesFooterTokens } from "./tokens/footerTokens";
 import { PipelineSolucoesFieldTokens, PipelineSolucoesNotificationFormTokens } from "./tokens/formTokens";
 import { PipelineSolucoesNotificationTokens } from "./tokens/notificationTokens";
@@ -29,4 +30,7 @@ export interface PipelineSolucoesThemeTokens {
   },
   footer?: PipelineSolucoesFooterTokens;
   notification?: PipelineSolucoesNotificationTokens;
+  display?: {
+    modal?: PipelineSolucoesModalTokens;
+  }
 }
