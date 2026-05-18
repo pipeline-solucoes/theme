@@ -6,6 +6,9 @@ e este projeto adere a [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
+## [1.0.10] - 2026-05-18
+- inclusao da props maxWidth no PipelineSolucoesSpacingByBreakpoint.
+
 ## [1.0.9] - 2026-05-16
 - implementação do theme para o componente Modal da lib display.
 

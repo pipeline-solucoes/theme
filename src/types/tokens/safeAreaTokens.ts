@@ -1,6 +1,7 @@
 export interface PipelineSolucoesSpacingByBreakpoint {
   margin: string;
   padding: string;
+  maxWidth: string;
 }
 
 export interface PipelineSolucoesSafeAreaTokens {
