@@ -6,7 +6,10 @@ e este projeto adere a [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
-## [1.0.11] - 2026-05-18
+## [1.0.12] - 2026-07-21
+- ajuste do PipelineSolucoesDrawerTokens.
+
+## [1.0.11] - 2026-07-21
 - implementacao do PipelineSolucoesDrawerTokens.
 
 ## [1.0.10] - 2026-05-18

@@ -3,20 +3,20 @@ export interface PipelineSolucoesDrawerTokens {
   
   background?: string,
 
-  header: {
+  header?: {
     background?: string,
   }
 
-  menuAvatar: {
+  menuAvatar?: {
     background?: string,    
   }
   
-  itemMenu: {
+  itemMenu?: {
     color?: string,
     colorSelected?: string,
   }
 
-  tooltip: {
+  tooltip?: {
     background?: string,
     color?: string,
   }
