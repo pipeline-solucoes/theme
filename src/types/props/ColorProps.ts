@@ -10,4 +10,7 @@ export interface ColorProps {
 
   backgroundFocused?: string;
   colorFocused?: string;
+
+  backgroundSelected?: string;
+  colorSelected?: string;
 }
